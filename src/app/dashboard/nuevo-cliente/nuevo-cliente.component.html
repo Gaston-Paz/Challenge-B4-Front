@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container mt-2">
+    <mat-card class="bg-card">
+        <mat-card-header>
+            <mat-card-title> {{titulo}} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+                <div class="row">
+                    <div class="col-6">
+                        <app-input [label]="'Nombres'" [type]="'text'" [tabindex]="1" [valor]="cliente.nombres"
+                            [requerido]="true" [readOnly]="false" [placeHolder]="'Nombres'" [maximo]="50" (cambio)="cliente.nombres = $event;"></app-input>
+
+                        <app-input [label]="'Fecha Nacimiento'" [type]="'date'"
+                            [tabindex]="3" [requerido]="false" [readOnly]="false" [valor]="cliente.fechaNacimiento !== undefined ? cliente.fechaConvertida : ''"
+                            [placeHolder]="'Fecha Nacimiento'" (cambio)="cliente.fechaNacimiento = $event;"></app-input>
+
+                        <app-input [label]="'Domicilio'" [type]="'text'" [tabindex]="5" [valor]="cliente.domicilio !== undefined ? cliente.domicilio : ''"
+                            [requerido]="false" [readOnly]="false" [placeHolder]="'Domicilio'" (cambio)="cliente.domicilio = $event;"></app-input>
+
+                        <app-input [label]="'E-mail'" [type]="'email'" [tabindex]="7" [valor]="cliente.email"
+                            [requerido]="true" [readOnly]="false" [placeHolder]="'E-mail'" (cambio)="cliente.email = $event;" (valida)="noValidaEmail = $event;"></app-input>
+
+                    </div>
+                    <div class="col-6">
+                        <app-input [label]="'Apellidos'" [type]="'text'" [tabindex]="2" [valor]="cliente.apellidos"
+                            [requerido]="true" [readOnly]="false" [placeHolder]="'Apellidos'" [maximo]="50" (cambio)="cliente.apellidos = $event;"></app-input>
+
+                        <app-input [label]="'Cuit'" [type]="'text'" [tabindex]="4" [valor]="cliente.cuit"
+                            [requerido]="true" [readOnly]="false" [placeHolder]="'Cuit: XX-XXXXXXXX-X'" [maximo]="15" (cambio)="cliente.cuit = $event;" (valida)="noValidaCuit = $event;"></app-input>
+
+                        <app-input [label]="'Celular'" [type]="'text'" [tabindex]="6" [valor]="cliente.celular"
+                            [requerido]="true" [readOnly]="false" [placeHolder]="'Celular'" [maximo]="50" (cambio)="cliente.celular = $event;"></app-input>
+                    </div>
+                </div>
+
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="d-flex w-100 justify-content-end">
+                <app-button [text]="textButton" [habilita]="FormValid() || noValidaEmail || noValidaCuit" [color]="'primary'" [clase]="'fz-16 mb-2 mr-2'" (clickButton)="clickButton()"></app-button>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#7b1fa2"
+  type="ball-atom"
+  [fullScreen]="true"
+  ><p style="color: white">Cargando...</p></ngx-spinner
+>

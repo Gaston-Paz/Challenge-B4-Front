@@ -1,0 +1,10 @@
+<div class="row d-flex w-100 align-items-center">
+    <div class="col-9">
+        <span>
+            {{data.message}}
+        </span>
+    </div>
+    <div class="col-3 d-flex justify-content-end">
+        <app-button-icon [icon]="'close'" [color]="'basic'" (clickButton)="Close()"></app-button-icon>
+    </div>
+</div>

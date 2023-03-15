@@ -1,0 +1,7 @@
+<button *ngIf="text !== 'Documentación'" mat-raised-button [disabled]="habilita" [class]="clase" [color]="color"
+    (click)="clickearon()"> {{text}}</button>
+
+<button *ngIf="text === 'Documentación'" mat-raised-button [disabled]="habilita" [class]="clase" [color]="color"
+    (click)="clickearon()">
+    <a target="_blank" href="https://documenter.getpostman.com/view/17368678/2s93JwP39n">Documentación</a>
+</button>

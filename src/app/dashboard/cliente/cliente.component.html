@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container mt-2">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Buscar un Cliente</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mt-2">
+            <mat-radio-group [(ngModel)]="valorRadio" color="primary" aria-label="Select an option" (change)="InputCorrecto($event)">
+                <mat-radio-button value="1">ID</mat-radio-button>
+                <mat-radio-button value="2">Nombre</mat-radio-button>
+              </mat-radio-group>
+              <div class="w-100 mt-2">
+                <app-input [type]="type" [label]="label" [valor]="valor" [placeHolder]="label" (cambio)="valorBusqueda($event)"></app-input>
+            </div>
+            <div class="d-flex w-100 mt-2 justify-content-end">
+                <app-button [text]="'Buscar'" [habilita]="valorBuscar === ''" [color]="'primary'" (clickButton)="clickButton()"></app-button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <app-table *ngIf="clientes.length > 0" [data]="clientes" [columns]="columnas"></app-table>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#7b1fa2"
+  type="ball-atom"
+  [fullScreen]="true"
+  ><p style="color: white">Cargando...</p></ngx-spinner
+>
